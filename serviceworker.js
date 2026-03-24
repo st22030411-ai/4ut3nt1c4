@@ -1,10 +1,11 @@
-const CACHE = "autentica-v1";
+const CACHE = "autentica-v2";
 
 const FILES = [
   "/",
   "/index.html",
   "/main.css",
   "/css/cart.css",
+  "/js/config.js",
   "/js/payment.js",
   "/js/header.js",
   "/js/chatbot.js",
@@ -29,7 +30,6 @@ self.addEventListener("install", e => {
 });
 
 self.addEventListener("activate", e => {
-  // Borra cachés viejos cuando se actualiza la app
   e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
@@ -41,13 +41,11 @@ self.addEventListener("activate", e => {
 self.addEventListener("fetch", e => {
   const url = new URL(e.request.url);
 
-  // ⚠️ IMPORTANTE: NO cachear peticiones al backend de Stripe ni a la API de Stripe
-  if (
-    url.pathname.startsWith("/create-payment-intent") ||
-    url.hostname.includes("stripe.com") ||
-    url.hostname.includes("esm.sh")
-  ) {
-    return; // deja pasar sin interceptar
+  // Solo cachear archivos del propio frontend (mismo origen).
+  // Cualquier petición a otro dominio (backend API, Stripe, Anthropic, etc.)
+  // se deja pasar directamente sin interceptar.
+  if (url.origin !== self.location.origin) {
+    return;
   }
 
   e.respondWith(

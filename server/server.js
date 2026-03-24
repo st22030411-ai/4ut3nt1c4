@@ -13,7 +13,8 @@ const allowedOrigins = [
   "http://localhost:5500",
   "http://127.0.0.1:5500",
   "http://localhost:3000",
-  process.env.FRONTEND_URL, // ← Tu Static Site de Render va aquí
+  "https://fourut3nt1c4s-frontend.onrender.com", // ← URL real del frontend
+  process.env.FRONTEND_URL, // ← Variable de entorno (respaldo)
 ].filter(Boolean);
 
 app.use(
