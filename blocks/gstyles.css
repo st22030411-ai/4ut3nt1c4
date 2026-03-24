@@ -1,0 +1,39 @@
+/* ===== IMPORTS & VARIABLES ===== */
+
+@font-face {
+    font-family: 'PlayfairDisplay';
+    src: url('../fonts/PlayfairDisplay-Regular.ttf') format('woff2'),
+        url('../fonts/PlayfairDisplay-Regular.ttf') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Metanoia';
+    src: url('../fonts/Metanoia.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 30px;
+}
+
+:root {
+    --color-primary: #000;
+    --color-secondary: #fff;
+    --color-accent: #b00;
+    --font-title: 'Metanoia';
+    --font-body: 'PlayfairDisplay', serif;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+
+}

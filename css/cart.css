@@ -1,0 +1,230 @@
+/* ══════════════════════════════════════════════════════
+   AUTÉNTICA — Cart Drawer + Stripe Form Styles
+   ══════════════════════════════════════════════════════ */
+
+/* ── Overlay oscuro detrás del drawer ── */
+#cart-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  transition: opacity 0.3s;
+}
+#cart-overlay.open {
+  display: block;
+}
+
+/* ── Drawer lateral (panel del carrito) ── */
+#cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  max-width: 95vw;
+  height: 100dvh;
+  background: #fff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 30px rgba(0,0,0,0.15);
+  transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+#cart-drawer.open {
+  right: 0;
+}
+
+/* ── Header del drawer ── */
+.cart-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f0e8df;
+  background: #faf7f4;
+}
+.cart-drawer__header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c1810;
+  letter-spacing: 0.3px;
+}
+#cart-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+#cart-close-btn:hover {
+  background: #f0e8df;
+  color: #2c1810;
+}
+
+/* ── Cuerpo con scroll ── */
+.cart-drawer__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+
+#cart-empty {
+  color: #aaa;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 15px;
+}
+
+/* ── Cada ítem del carrito ── */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f5f0eb;
+}
+.cart-item__img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.cart-item__info {
+  flex: 1;
+}
+.cart-item__name {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2c1810;
+}
+.cart-item__price {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+.cart-item__remove {
+  background: none;
+  border: none;
+  color: #bbb;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.cart-item__remove:hover {
+  color: #e53e3e;
+  background: #fff5f5;
+}
+
+/* ── Footer fijo con total y botones ── */
+.cart-drawer__footer {
+  padding: 20px 24px;
+  border-top: 1px solid #f0e8df;
+  background: #faf7f4;
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: #2c1810;
+}
+.cart-total-row strong {
+  font-size: 20px;
+  color: #c8a96e;
+}
+
+/* ── Botón principal "Ir a pagar" ── */
+#cart-checkout-btn {
+  width: 100%;
+  padding: 14px;
+  background: #c8a96e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+#cart-checkout-btn:hover:not(:disabled) {
+  background: #b8944a;
+  transform: translateY(-1px);
+}
+#cart-checkout-btn:disabled {
+  background: #ddd;
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+/* ── Sección de pago Stripe ── */
+#stripe-payment-section {
+  margin-top: 10px;
+}
+
+/* El formulario de Stripe Elements se monta aquí */
+#payment-element {
+  margin-bottom: 16px;
+}
+
+/* Botón "Pagar ahora" */
+#pay-now-btn {
+  width: 100%;
+  padding: 14px;
+  background: #2c1810;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 10px;
+}
+#pay-now-btn:hover:not(:disabled) {
+  background: #4a2c1a;
+}
+#pay-now-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+/* Botón "Volver al carrito" */
+#cancel-payment-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #888;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+#cancel-payment-btn:hover {
+  background: #f5f0eb;
+  color: #2c1810;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  #cart-drawer {
+    width: 100vw;
+    right: -100vw;
+  }
+  #cart-drawer.open {
+    right: 0;
+  }
+}

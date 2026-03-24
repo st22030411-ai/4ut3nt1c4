@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auténtica</title>
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="blocks/chatbot.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#000000" />
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header class="header">
+    <div class="header__container">
+      <div class="header__logo">
+        <img src="./assets/images/logo.png" alt="Auténtica Logo" class="header__logo-img" />
+      </div>
+      <nav class="header__nav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="#about" class="nav__link">About me</a></li>
+          <li class="nav__item"><a href="#experiencias" class="nav__link">Experiencias</a></li>
+          <li class="nav__item"><a href="#contacto" class="nav__link">Contacto</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle">☰</button>
+
+      <div class="header__icons">
+        <button class="icon-btn">👤</button>
+        <button class="icon-btn">🤍</button>
+        <!-- Botón del carrito con badge de cantidad -->
+        <button class="icon-btn cart-icon-btn" style="position:relative;">
+          🛒
+          <span id="cart-badge" style="
+            display:none;
+            position:absolute;
+            top:-6px; right:-6px;
+            background:#c8a96e;
+            color:#fff;
+            border-radius:50%;
+            width:18px; height:18px;
+            font-size:11px;
+            align-items:center;
+            justify-content:center;
+            font-weight:bold;
+          ">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <script src="js/header.js"></script>
+
+  <!-- ======= HERO SECTION ======= -->
+  <section class="hero" id="home">
+    <div class="hero__background">
+      <img src="./assets/images/herobg.png" alt="Fondo hero" class="hero__background-image" />
+    </div>
+    <div class="hero__content">
+      <h1 class="hero__title">
+        ¿Cuándo fue la vez que dejaste de ser tu "yo más auténtica"?
+      </h1>
+      <p class="hero__text">
+        Tod@s lo hemos vivido alguna vez en la vida. Hoy estás leyendo estas líneas porque has decidido declararte a cargo de tu vida, tu persona, tu marca personal.
+        <br><br>
+        Hoy eres la protagonista de tu historia y empiezas a personalizar tu poder.
+        <br><br>
+        Haz de reencontrarte tu espada de vida, de reenamorarte tu más genuino amor, de reinventarte tu mejor fortaleza y de SER AUTÉNTICA, TU MAYOR PODER.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT ======= -->
+  <section class="about" id="about">
+    <div class="about__container">
+      <div class="about__content">
+        <h2 class="about__title">Sobre Mí</h2>
+        <div class="about__text">
+          <p>Cada paso ha sido un propósito, y he aprendido en estos años a darle más valor a esos pasos que a una meta. La meta es un momento, un día, un segundo... tus propósitos son diarios, son imperfectos, son humanos pero siempre constantes.</p>
+        </div>
+        <div class="about__stats">
+          <div class="stat">
+            <span class="stat__number">5+</span>
+            <span class="stat__text">Años de Experiencia</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">50+</span>
+            <span class="stat__text">Clientes Satisfechos</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">100+</span>
+            <span class="stat__text">Proyectos Completados</span>
+          </div>
+        </div>
+      </div>
+      <div class="about__image">
+        <div class="image-placeholder">
+          <img src="" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CARRUSEL DE PRODUCTOS ======= -->
+  <section class="carousel-section" id="experiencias">
+    <div class="scene">
+      <div class="carousel">
+        <div class="card">
+          <img src="https://picsum.photos/300/200?1" />
+          <h3>Limpieza de Closet</h3>
+          <div class="buttons">
+            <button class="buy">Agregar 🛒</button>
+            <button class="fav">❤</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/300/200?2" />
+          <h3>Colorimetría Personal</h3>
+          <div class="buttons">
+            <button class="buy">Agregar 🛒</button>
+            <button class="fav">❤</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/300/200?3" />
+          <h3>Asesoría de Imagen</h3>
+          <div class="buttons">
+            <button class="buy">Agregar 🛒</button>
+            <button class="fav">❤</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/300/200?4" />
+          <h3>Personal Shopper</h3>
+          <div class="buttons">
+            <button class="buy">Agregar 🛒</button>
+            <button class="fav">❤</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/300/200?5" />
+          <h3>Styling de Outfit</h3>
+          <div class="buttons">
+            <button class="buy">Agregar 🛒</button>
+            <button class="fav">❤</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/300/200?6" />
+          <h3>Armado de Cápsula</h3>
+          <div class="buttons">
+            <button class="buy">Agregar 🛒</button>
+            <button class="fav">❤</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/300/200?7" />
+          <h3>Consulta Express</h3>
+          <div class="buttons">
+            <button class="buy">Agregar 🛒</button>
+            <button class="fav">❤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CHATBOT ======= -->
+  <div id="chatbot-container">
+    <button id="chatbot-button">💬</button>
+    <div id="chatbot-box">
+      <div id="chatbot-header">Assistant</div>
+      <div id="chatbot-messages"></div>
+      <input type="text" id="chatbot-input" placeholder="Ask something..." />
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════
+       OVERLAY para cerrar el carrito al hacer click afuera
+  ═══════════════════════════════════════════════════ -->
+  <div id="cart-overlay"></div>
+
+  <!-- ═══════════════════════════════════════════════════
+       CART DRAWER — Panel lateral del carrito
+  ═══════════════════════════════════════════════════ -->
+  <aside id="cart-drawer">
+    <div class="cart-drawer__header">
+      <h2>Tu Carrito</h2>
+      <button id="cart-close-btn">✕</button>
+    </div>
+
+    <!-- Lista de ítems -->
+    <div class="cart-drawer__body">
+      <p id="cart-empty">Tu carrito está vacío.</p>
+      <div id="cart-items"></div>
+    </div>
+
+    <!-- Total -->
+    <div class="cart-drawer__footer">
+      <div class="cart-total-row">
+        <span>Total:</span>
+        <strong id="cart-total">$0.00 MXN</strong>
+      </div>
+
+      <!-- Botón "Ir a pagar" -->
+      <button id="cart-checkout-btn" disabled>
+        Ir a pagar →
+      </button>
+
+      <!-- ── Sección de pago con Stripe (oculta inicialmente) ── -->
+      <div id="stripe-payment-section" style="display:none;">
+        <p id="payment-loading" style="text-align:center;color:#888;font-size:14px;">
+          Cargando formulario de pago...
+        </p>
+
+        <form id="stripe-payment-form">
+          <!-- Stripe monta el formulario de tarjeta aquí -->
+          <div id="payment-element"></div>
+
+          <p id="payment-error" style="
+            display:none;
+            color:#e53e3e;
+            font-size:13px;
+            margin-top:10px;
+          "></p>
+
+          <button id="pay-now-btn" type="submit">
+            Pagar ahora
+          </button>
+          <button id="cancel-payment-btn" type="button">
+            ← Volver al carrito
+          </button>
+        </form>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="js/config.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/sw-register.js"></script>
+  <script type="module" src="js/payment.js"></script>
+
+</body>
+</html>

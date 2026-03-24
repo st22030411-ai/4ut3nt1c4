@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-secondary);
+    background-color: var(--color-primary);
+}
+
+
+/* ========== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(2, 2, 2, .5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    /* Para Safari */
+
+    padding: 1rem 3rem;
+    transition: all 0.4s ease;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+s
+
+/* Efecto glassmorphism mejorado al hacer scroll */
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-bottom: 1px solid rgba(225, 17, 17, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.header__logo-img {
+    height: 30px;
+    ;
+
+}
+
+.nav__list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav__link {
+    color: var(--color-secondary);
+    font-family: var(--font-title);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+/* HOVER - solo cuando pasa el cursor */
+.nav__link:hover {
+    color: var(--color-accent);
+}
+
+/* ACTIVO - estado permanente (separado del hover) */
+.nav__link--active {
+    color: var(--color-accent);
+    font-weight: 600;
+    /* Puedes añadir esto para diferenciarlo más */
+}
+
+.header__icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.icon-btn {
+    background-color: var(--color-secondary);
+    border: none;
+    color: var(--color-primary);
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.icon-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-secondary);
+}
+
+
+@media (max-width: 768px) {
+
+    .header {
+        padding: 1rem 1.5rem;
+
+        position: fixed;
+        top: 0;
+
+    }
+
+    .header__container {
+        padding: 0;
+    }
+
+    /* ocultamos menú normal */
+    .nav__list {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(0, 0, 0, .6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 2rem 0;
+        gap: 1.5rem;
+
+        /* oculto por defecto */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-20px);
+        transition: .3s ease;
+    }
+
+    /* cuando esté activo */
+    .nav__list.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .nav__link {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    /* iconos */
+    .header__icons {
+        gap: .5rem;
+    }
+
+    /* botón hamburguesa */
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+}

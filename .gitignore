@@ -1,0 +1,25 @@
+# ══════════════════════════════════════
+#  ARCHIVOS QUE NO SE SUBEN A GIT
+# ══════════════════════════════════════
+
+# Variables de entorno (¡contienen tus llaves secretas!)
+.env
+.env.local
+.env.production
+server/.env
+
+# Dependencias de Node (se reinstalan con npm install)
+node_modules/
+server/node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/

@@ -1,0 +1,38 @@
+# ══════════════════════════════════════════════════════
+#  render.yaml — Blueprint de Render para Auténtica
+#
+#  Este archivo le dice a Render cómo desplegar
+#  automáticamente el backend y el frontend.
+# ══════════════════════════════════════════════════════
+
+services:
+  # ── BACKEND (API: chatbot + Stripe) ──────────────────
+  - type: web
+    name: autentica-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: STRIPE_SECRET_KEY
+        sync: false          # Render te pedirá el valor en el dashboard
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: FRONTEND_URL
+        sync: false          # Pon aquí la URL del Static Site una vez creado
+      - key: PORT
+        value: 4242
+
+  # ── FRONTEND (PWA estática) ───────────────────────────
+  - type: static
+    name: autentica
+    buildCommand: ""         # No hay build step, son archivos estáticos
+    staticPublishPath: .     # Sirve desde la raíz del repo
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
