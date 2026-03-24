@@ -9,6 +9,6 @@
 // ══════════════════════════════════════════════════════════════════
 
 const CONFIG = {
-  BACKEND_URL: "https://TU-BACKEND.onrender.com",
+  BACKEND_URL: "https://fourut3nt1c4.onrender.com",
   STRIPE_PUBLIC_KEY: "pk_test_51T9FDiCB5JEV56dQG2bpLgwTT1UV3M5hD4r7Tchh8UwLCEsFCoegMGYb2ZIG4POAkZoQk8AmOvHN8qzSCjmSKdiG00gRziON0d",
 };
