@@ -22,7 +22,7 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error(CORS bloqueado para: ${ origin }));
+        callback(new Error(`CORS bloqueado para: ${origin}`));
       }
     },
   })
@@ -66,43 +66,46 @@ app.post("/chat", async (req, res) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": Bearer ${ process.env.GROQ_API_KEY },
+        "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
       },
-  body: JSON.stringify({
-    model: "llama3-8b-8192",
-    max_tokens: 512,
-    messages: [
-      {
-        role: "system",
-        content: `Eres la asistente virtual de Auténtica, una marca de moda e imagen personal.
+      body: JSON.stringify({
+        model: "llama3-8b-8192",
+        max_tokens: 512,
+        messages: [
+          {
+            role: "system",
+            content: `Eres la asistente virtual de Auténtica, una marca de moda e imagen personal.
 Responde SOLO con información del sitio web. Sé amable, breve y en español.
 Si la pregunta no tiene relación con el sitio, di: "No tengo esa información, pero puedo ayudarte con nuestros servicios."
- 
+
 Contenido del sitio:
 ${websiteContent || "Auténtica ofrece servicios de imagen personal: Limpieza de Closet, Colorimetría Personal, Asesoría de Imagen, Personal Shopper, Styling de Outfit, Armado de Cápsula y Consulta Express."}`,
-      },
-      {
-        role: "user",
-        content: message,
-      },
-    ],
-  }),
+          },
+          {
+            role: "user",
+            content: message,
+          },
+        ],
+      }),
     });
 
-if (!response.ok) {
-  const err = await response.json();
-  throw new Error(err.error?.message || "Error de API Groq");
-}
+    if (!response.ok) {
+      const err = await response.json();
+      throw new Error(err.error?.message || "Error de API Groq");
+    }
 
-const data = await response.json();
-const reply = data.choices?.[0]?.message?.content || "No pude generar una respuesta.";
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "No pude generar una respuesta.";
 
-res.json({ reply });
+    res.json({ reply });
   } catch (err) {
-  console.error("Error chatbot:", err.message);
-  res.status(500).json({ error: err.message });
-}
+    console.error("Error chatbot:", err.message);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // ── Health check ────────────────────────────────────────────────
 app.get("/", (req, res) => res.json({ status: "ok", service: "Auténtica API" }));
+
+const PORT = process.env.PORT || 4242;
+app.listen(PORT, () => console.log(`✅ Servidor corriendo en puerto ${PORT}`));
