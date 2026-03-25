@@ -1,4 +1,4 @@
-const CACHE = "autentica-v2";
+const CACHE = "autentica-v3";
 
 const FILES = [
   "/",
