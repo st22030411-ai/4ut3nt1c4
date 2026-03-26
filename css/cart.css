@@ -22,7 +22,8 @@
   top: 0;
   right: -420px;
   width: 400px;
-  max-width: 95vw;
+  max-width: 100vw;
+  height: 100%;
   height: 100dvh;
   background: #fff;
   z-index: 1000;
@@ -46,6 +47,7 @@
   padding: 20px 24px;
   border-bottom: 1px solid #f0e8df;
   background: #faf7f4;
+  flex-shrink: 0;
 }
 
 .cart-drawer__header h2 {
@@ -72,12 +74,18 @@
   color: #2c1810;
 }
 
-/* ── Cuerpo con scroll ── */
-.cart-drawer__body {
+/* ── Zona scrollable — contiene TODO: items + footer + formulario ── */
+.cart-drawer__scroll {
   flex: 1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
+
+/* ── Cuerpo con items ── */
+.cart-drawer__body {
   padding: 20px 24px;
-  min-height: 0;
 }
 
 #cart-empty {
@@ -138,13 +146,11 @@
   background: #fff5f5;
 }
 
-/* ── Footer fijo con total y botones ── */
+/* ── Footer con total y botones ── */
 .cart-drawer__footer {
   padding: 20px 24px;
   border-top: 1px solid #f0e8df;
   background: #faf7f4;
-  overflow-y: auto;
-  max-height: 70vh;
 }
 
 .cart-total-row {
@@ -189,10 +195,9 @@
 
 /* ── Sección de pago Stripe ── */
 #stripe-payment-section {
-  margin-top: 10px;
+  padding: 0 24px 40px;
 }
 
-/* El formulario de Stripe Elements se monta aquí */
 #payment-element {
   margin-bottom: 16px;
 }
@@ -209,7 +214,9 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+  margin-top: 16px;
   margin-bottom: 10px;
+  display: block;
 }
 
 #pay-now-btn:hover:not(:disabled) {
@@ -232,6 +239,8 @@
   font-size: 14px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  display: block;
+  margin-bottom: 16px;
 }
 
 #cancel-payment-btn:hover {
@@ -239,48 +248,10 @@
   color: #2c1810;
 }
 
-/* ── Responsive ── */
+/* ── Responsive móvil ── */
 @media (max-width: 480px) {
   #cart-drawer {
     width: 100vw;
     right: -100vw;
-  }
-
-  #cart-drawer.open {
-    right: 0;
-  }
-}
-
-/* ── Fix móvil: formulario de pago scrollable ── */
-#stripe-payment-section {
-  overflow-y: auto;
-}
-
-/* Cuando el formulario de pago está visible,
-   el drawer completo debe poder hacer scroll */
-#cart-drawer:has(#stripe-payment-section[style*="block"]) {
-  overflow-y: auto;
-}
-
-/* El footer no crece infinito en móvil */
-.cart-drawer__footer {
-  flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-
-  /* En móvil, todo el aside hace scroll cuando el form de pago está abierto */
-  #cart-drawer {
-    overflow-y: auto;
-  }
-
-  .cart-drawer__body {
-    overflow-y: visible;
-    flex: none;
-  }
-
-  .cart-drawer__footer {
-    max-height: none;
-    overflow-y: visible;
   }
 }

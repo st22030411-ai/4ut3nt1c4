@@ -197,58 +197,40 @@
       <button id="cart-close-btn">✕</button>
     </div>
 
-    <!-- Lista de ítems -->
-    <div class="cart-drawer__body">
-      <p id="cart-empty">Tu carrito está vacío.</p>
-      <div id="cart-items"></div>
-    </div>
+    <!-- ── Todo el contenido scrollable en un solo contenedor ── -->
+    <div class="cart-drawer__scroll">
 
-    <!-- Total -->
-    <div class="cart-drawer__footer">
-      <div class="cart-total-row">
-        <span>Total:</span>
-        <strong id="cart-total">$0.00 MXN</strong>
+      <!-- Lista de ítems -->
+      <div class="cart-drawer__body">
+        <p id="cart-empty">Tu carrito está vacío.</p>
+        <div id="cart-items"></div>
       </div>
 
-      <!-- Botón "Ir a pagar" -->
-      <button id="cart-checkout-btn" disabled>
-        Ir a pagar →
-      </button>
-
+      <!-- Total y botón ir a pagar -->
+      <div class="cart-drawer__footer">
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <strong id="cart-total">$0.00 MXN</strong>
+        </div>
+        <button id="cart-checkout-btn" disabled>
+          Ir a pagar →
+        </button>
       </div>
 
-    <!-- ── Sección de pago con Stripe — dentro del body para tener scroll ── -->
-    <div id="stripe-payment-section" style="display:none; padding: 0 24px 24px;">
-      <p id="payment-loading" style="text-align:center;color:#888;font-size:14px;">
-        Cargando formulario de pago...
-      </p>
+      <!-- Formulario de pago Stripe -->
+      <div id="stripe-payment-section" style="display:none;">
+        <p id="payment-loading" style="text-align:center;color:#888;font-size:14px;padding:0 24px;">
+          Cargando formulario de pago...
+        </p>
+        <form id="stripe-payment-form">
+          <div id="payment-element"></div>
+          <p id="payment-error" style="display:none;color:#e53e3e;font-size:13px;margin-top:10px;"></p>
+          <button id="pay-now-btn" type="submit">Pagar ahora</button>
+          <button id="cancel-payment-btn" type="button">← Volver al carrito</button>
+        </form>
+      </div>
 
-      <form id="stripe-payment-form">
-        <div id="payment-element"></div>
-
-        <p id="payment-error" style="
-          display:none;
-          color:#e53e3e;
-          font-size:13px;
-          margin-top:10px;
-        "></p>
-
-        <button id="pay-now-btn" type="submit" style="
-          width:100%; padding:14px; background:#2c1810; color:#fff;
-          border:none; border-radius:10px; font-size:16px; font-weight:600;
-          cursor:pointer; margin-top:16px; margin-bottom:10px;
-        ">
-          Pagar ahora
-        </button>
-        <button id="cancel-payment-btn" type="button" style="
-          width:100%; padding:12px; background:transparent; color:#888;
-          border:1px solid #ddd; border-radius:10px; font-size:14px; cursor:pointer;
-          margin-bottom:16px;
-        ">
-          ← Volver al carrito
-        </button>
-      </form>
-    </div>
+    </div><!-- fin .cart-drawer__scroll -->
 
   </aside>
 
