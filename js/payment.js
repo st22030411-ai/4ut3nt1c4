@@ -1,16 +1,14 @@
-
-
 // La URL del backend y la llave pública de Stripe vienen de js/config.js
 
 // ─── Catálogo de productos ──────────────────────────────────────
 const PRODUCTS = [
-  { id: 1, name: "Limpieza de Closet",     price: 100, img: "https://picsum.photos/300/200?1" },
-  { id: 2, name: "Colorimetría Personal",  price: 100, img: "https://picsum.photos/300/200?2" },
-  { id: 3, name: "Asesoría de Imagen",     price: 100, img: "https://picsum.photos/300/200?3" },
-  { id: 4, name: "Personal Shopper",       price: 100, img: "https://picsum.photos/300/200?4" },
-  { id: 5, name: "Styling de Outfit",      price: 100, img: "https://picsum.photos/300/200?5" },
-  { id: 6, name: "Armado de Cápsula",      price: 100, img: "https://picsum.photos/300/200?6" },
-  { id: 7, name: "Consulta Express",       price: 100, img: "https://picsum.photos/300/200?7" },
+  { id: 1, name: "Limpieza de Closet", price: 100, img: "https://picsum.photos/300/200?1" },
+  { id: 2, name: "Colorimetría Personal", price: 100, img: "https://picsum.photos/300/200?2" },
+  { id: 3, name: "Asesoría de Imagen", price: 100, img: "https://picsum.photos/300/200?3" },
+  { id: 4, name: "Personal Shopper", price: 100, img: "https://picsum.photos/300/200?4" },
+  { id: 5, name: "Styling de Outfit", price: 100, img: "https://picsum.photos/300/200?5" },
+  { id: 6, name: "Armado de Cápsula", price: 100, img: "https://picsum.photos/300/200?6" },
+  { id: 7, name: "Consulta Express", price: 100, img: "https://picsum.photos/300/200?7" },
 ];
 
 // ─── Estado del carrito ─────────────────────────────────────────
@@ -123,10 +121,9 @@ async function showPaymentForm() {
   loadingMsg.style.display = "block";
 
   try {
-    // 1. Cargar Stripe.js dinámicamente
+    // 1. Usar Stripe global (cargado desde js.stripe.com en index.html)
     if (!stripeInstance) {
-      const { loadStripe } = await import("https://esm.sh/@stripe/stripe-js");
-      stripeInstance = await loadStripe(CONFIG.STRIPE_PUBLIC_KEY);
+      stripeInstance = Stripe(CONFIG.STRIPE_PUBLIC_KEY);
     }
 
     const totalAmount = getCartTotal();
@@ -245,6 +242,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const cancelBtn = document.getElementById("cancel-payment-btn");
   if (cancelBtn) cancelBtn.addEventListener("click", hidePaymentForm);
 });
-
-
-
