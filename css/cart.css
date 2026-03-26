@@ -196,6 +196,10 @@
 /* ── Sección de pago Stripe ── */
 #stripe-payment-section {
   padding: 0 24px 40px;
+  max-height: 80vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 
 #payment-element {
