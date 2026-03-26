@@ -96,12 +96,19 @@ function renderCartItems() {
 function openCart() {
   document.getElementById("cart-drawer").classList.add("open");
   document.getElementById("cart-overlay").classList.add("open");
+  // Bloquea el scroll del body para que el drawer capture el scroll en móvil
+  document.body.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
 }
 
 function closeCart() {
   document.getElementById("cart-drawer").classList.remove("open");
   document.getElementById("cart-overlay").classList.remove("open");
-  // Ocultar formulario de pago si estaba visible
+  // Restaura el scroll del body
+  document.body.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.width = "";
   hidePaymentForm();
 }
 
