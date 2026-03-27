@@ -50,9 +50,3 @@ autenticaaa/
 
 ---
 
-## ⚠️ Para producción
-
-1. Cambia las llaves `pk_test_` → `pk_live_` y `sk_test_` → `sk_live_`
-2. Actualiza `return_url` en `js/payment.js` con tu dominio real
-3. Agrega tu dominio al array `origin` en `server/server.js`
-4. Activa HTTPS (obligatorio para Stripe en producción)
